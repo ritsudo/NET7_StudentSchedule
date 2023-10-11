@@ -71,16 +71,20 @@ int pair = (currentLesson / 4) + 1;
 Console.WriteLine("");
 Console.WriteLine("#### Расписание ####");
 Console.WriteLine($"# Текущий день: {currentDate.Day}.{currentDate.Month}.{currentDate.Year}, {daysOfWeek[currentDayOfWeek]}");
-Console.WriteLine($"# Текущее время: {currentTime.Hours}:{currentTime.Minutes}");
+Console.WriteLine($"# Текущее время: {currentTime.Hours}:{currentTime.Minutes:00}");
 
 Console.WriteLine("#### Текущее занятие ####");
 if (currentLesson < 1)
 {
     Console.WriteLine("# Занятия ещё не начались, либо имеется ошибка часов");
+} 
+else if (currentLesson >= 20) 
+{
+    Console.WriteLine($"# Занятия на сегодня, вероятно, уже завершились, так как время превышает {classSchedule[19]}, либо имеется ошибка часов");
 }
 else
 {
-    Console.WriteLine($"# Сейчас промежуток № {currentLesson}, относится к {pair} паре");
+//    Console.WriteLine($"# Сейчас промежуток № {currentLesson}, относится к {pair} паре");
     Console.WriteLine($"# В общем расписании: {classScheduleExtended[currentLesson-1]} ({classSchedule[currentLesson-1]}-{classSchedule[currentLesson]})");
     Console.WriteLine($"# Это занятие: {weekSchedule[currentDayOfWeek, pair-1]}");
 }
