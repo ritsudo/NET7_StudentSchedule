@@ -72,6 +72,7 @@ Console.WriteLine("");
 Console.WriteLine("#### Расписание ####");
 Console.WriteLine($"# Текущий день: {currentDate.Day}.{currentDate.Month}.{currentDate.Year}, {daysOfWeek[currentDayOfWeek]}");
 Console.WriteLine($"# Текущее время: {currentTime.Hours}:{currentTime.Minutes}");
+
 Console.WriteLine("#### Текущее занятие ####");
 if (currentLesson < 1)
 {
@@ -83,6 +84,27 @@ else
     Console.WriteLine($"# В общем расписании: {classScheduleExtended[currentLesson-1]} ({classSchedule[currentLesson-1]}-{classSchedule[currentLesson]})");
     Console.WriteLine($"# Это занятие: {weekSchedule[currentDayOfWeek, pair-1]}");
 }
+
+int nextDayOfWeek = 0;
+if (currentDayOfWeek == 6) {
+    nextDayOfWeek = 0;
+} else {
+    nextDayOfWeek = currentDayOfWeek + 1;
+}
+Console.WriteLine("#### Завтра ####");
+Console.WriteLine($"# Следующий день: {daysOfWeek[nextDayOfWeek]}");
+Console.Write("# Вам на занятие: ");
+for (int counter = 0; counter < 5; counter +=1 ) 
+{
+    if (weekSchedule[nextDayOfWeek, counter] != "Нет занятия")
+    {
+        Console.Write(weekSchedule[nextDayOfWeek, counter]);
+        Console.Write($", это {counter+1} пара (к {classSchedule[counter*4]}).");
+        break;
+    }
+}
+
+Console.WriteLine("");
 Console.WriteLine("");
 Console.WriteLine("Нажмите ENTER, чтобы закрыть...");
 Console.ReadLine();
