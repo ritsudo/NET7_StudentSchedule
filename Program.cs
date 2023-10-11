@@ -1,11 +1,14 @@
-﻿// See https://aka.ms/new-console-template for more information
-// Updated at 11.10.2023
+﻿// Updated at 11.10.2023
 
 DateTime currentDate = DateTime.Now;
 
 string[] daysOfWeek = {"Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"};
 int currentDayOfWeek = (int) currentDate.DayOfWeek;
 TimeSpan currentTime = currentDate.TimeOfDay;
+
+/*
+    Array with class and breaks schedule for lessons 1-5
+*/
 
 string[] classSchedule = {
 "08:30", "09:15", "09:20", "10:05",
@@ -37,6 +40,9 @@ string[] classScheduleExtended = {
     "перерыв 10-20 минут между 5 и 6 парой",
 };
 
+/*
+    Array with lessons shchedule: starting from Sunday, lessons 1-5
+*/
 string[,] weekSchedule = {
     {"Нет занятия", "Нет занятия", "Нет занятия", "Нет занятия", "Нет занятия"},
     {"[ЭОС] +ФКиС", "[ЭОС] -История", "[ЭОС] +ОРГ -История", "Нет занятия", "Нет занятия"},
@@ -60,7 +66,6 @@ foreach (string lesson in classSchedule) {
     }
 }
 
-//TODO CHECK
 int pair = (currentLesson / 4) + 1;
 
 Console.WriteLine("");
