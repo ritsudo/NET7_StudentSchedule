@@ -97,15 +97,23 @@ if (currentDayOfWeek == 6) {
 }
 Console.WriteLine("#### Завтра ####");
 Console.WriteLine($"# Следующий день: {daysOfWeek[nextDayOfWeek]}");
-Console.Write("# Вам на занятие: ");
+
+Boolean tasksExists = false;
+
 for (int counter = 0; counter < 5; counter +=1 ) 
 {
     if (weekSchedule[nextDayOfWeek, counter] != "Нет занятия")
     {
+        Console.Write("# Вам на занятие: ");
         Console.Write(weekSchedule[nextDayOfWeek, counter]);
         Console.Write($", это {counter+1} пара (к {classSchedule[counter*4]}).");
+        tasksExists = true;
         break;
     }
+}
+
+if (tasksExists == false) {
+        Console.WriteLine("# Завтра занятий нет =)");
 }
 
 Console.WriteLine("");
